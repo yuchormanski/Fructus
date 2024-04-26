@@ -8,11 +8,34 @@
 import SwiftUI
 
 struct SourceLinkView: View {
+    
+    //MARK: - PROPERTIES
+    var fruit: String
+    let url = "https://wikipedia.org/wiki/"
+    //MARK: - BODY
+    
+    
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        GroupBox() {
+            HStack {
+                Text("Content source")
+                Spacer()
+                Link(destination: URL(string: "\(url)\(fruit)")!, label: {
+                    Text("wikipedia")
+                    Image(systemName: "arrow.up.right.square")
+                })
+                .font(.footnote)
+                
+            }
+        }
     }
 }
-
-#Preview {
-    SourceLinkView()
+//MARK: - PREVIEW
+struct SourceLinkView_Previews: PreviewProvider {
+    static var previews: some View {
+        SourceLinkView(fruit: fruitsData[0].title)
+            .previewLayout(.sizeThatFits)
+            .padding()
+    }
 }
